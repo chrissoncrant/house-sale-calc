@@ -1,48 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title>Template</title>
+        <title>Template</title>
 
-		<!-- Favicon -->
-		<link
-			rel="shortcut icon"
-			href="images/C-logo.png?v=1.1"
-			type="image/x-icon"
-		/>
+        <!-- Favicon -->
+        <link
+            rel="shortcut icon"
+            href="images/C-logo.png?v=1.1"
+            type="image/x-icon"
+        />
 
-		<link href="style.css" rel="stylesheet" type="text/css" />
-		<script src="./data.js" type="module"></script>
-		<script src="script.js" type="module"></script>
-	</head>
-	<body>
-		<div class="wrap">
-			<div>
-				<label for="investmentInput">Investment Into Property</label>
-				<input id="investmentInput" type="number" />
-			</div>
-
-			<div>
-				<label for="listPriceInput">List Price</label>
-				<input type="number" id="listPriceInput" />
-			</div>
-			<button>Calculate</button>
-			<div>
-				<p id="mortgageOwed">Mortgage Owed: $68961</p>
-				<p id="remainingValue"></p>
-				<p id="agentFee"></p>
-				<p id="escrowFee"></p>
-				<p id="probateFee"></p>
-				<p id="loanFee"></p>
-				<p id="totalFees"></p>
-				<p id="totalProfit"></p>
-				<p id="splitFiveWays"></p>
-				<p id="grandkidsSplit"></p>
-				<p id="amountProfitWithoutInvestment"></p>
-				<p id="theDifference"></p>
-			</div>
-		</div>
-	</body>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src="./data.js" type="module"></script>
+        <script src="script.js" type="module"></script>
+    </head>
+    <body>
+        <div class="wrap">
+            <h1>House Sale Calculator</h1>
+            <div>
+                <div>
+                    <label for="investmentInput"
+                        >Investment Into Property</label
+                    >
+                </div>
+                <input id="investmentInput" type="number" />
+            </div>
+            <div>
+                <div><label for="listPriceInput">List Price</label></div>
+                <input type="number" id="listPriceInput" />
+            </div>
+            <button>Calculate</button>
+            <div>
+                <p class="valueTitle" id="mortgageOwed">
+                    Mortgage Owed: <span>$68961</span>
+                </p>
+                <p class="valueTitle">
+                    Remaining Value: <span id="remainingValue"></span>
+                </p>
+                <p class="valueTitle">
+                    5% Agent Fee: <span id="agentFee"></span>
+                </p>
+                <p class="valueTitle">
+                    5% Escrow Fee: <span id="escrowFee"></span>
+                </p>
+                <p class="valueTitle">
+                    Probate Fee: <span id="probateFee"></span>
+                </p>
+                <p class="valueTitle">Loan Fee: <span id="loanFee"></span></p>
+                <p class="valueTitle">
+                    Total Fees: <span id="totalFees"></span>
+                </p>
+                <p class="valueTitle">
+                    Total Profit: <span id="totalProfit"></span>
+                </p>
+                <p class="valueTitle">
+                    Split 5 ways: <span id="splitFiveWays"></span>
+                </p>
+                <p class="valueTitle">
+                    Grandkids Split: <span id="grandkidsSplit"></span>
+                </p>
+                <p class="valueTitle">
+                    Amount of Profit Without Investment:
+                    <span id="amountProfitWithoutInvestment"></span>
+                </p>
+                <p class="valueTitle">
+                    The Difference: <span id="theDifference"></span>
+                </p>
+            </div>
+        </div>
+    </body>
 </html>

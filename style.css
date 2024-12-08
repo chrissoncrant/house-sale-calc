@@ -48,7 +48,6 @@ h6,
 p {
     overflow-wrap: break-word;
     /* max-width: 65ch; */
-    font-size: 30px;
 }
 
 a {
@@ -76,3 +75,17 @@ header>* {
 }
 
 /* INSERT NEW CSS BELOW */
+.wrap {
+    max-width: 600px;
+    margin-inline: auto;
+    margin-block-start: 30px;
+}
+
+.wrap>*+*,
+button {
+    margin-block-end: 20px;
+}
+
+.valueTitle span {
+    font-weight: bold;
+}

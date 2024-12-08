@@ -9,136 +9,117 @@ const probatePercentage = 0.02;
 const loanInterest = 0.1;
 
 function calculateFees(listPrice) {
-	const agentFee = agentPercentage * listPrice;
-	const escrowFee = escrowPercentage * listPrice;
-	const probateFee = probatePercentage * listPrice;
-	const loanFee = loanInterest * investmentInput.value;
-	const totalFees = agentFee + escrowFee + probateFee + loanFee;
-	return { totalFees, agentFee, escrowFee, probateFee, loanFee };
+    const agentFee = Number((agentPercentage * listPrice).toFixed(2));
+    const escrowFee = Number((escrowPercentage * listPrice).toFixed(2));
+    const probateFee = Number((probatePercentage * listPrice).toFixed(2));
+    const loanFee = Number((loanInterest * investmentInput.value).toFixed(2));
+    const totalFees = agentFee + escrowFee + probateFee + loanFee;
+    return { totalFees, agentFee, escrowFee, probateFee, loanFee };
 }
 
 function calculateValues() {
-	const { totalFees } = calculateFees(listPriceInput.value);
+    const { totalFees } = calculateFees(listPriceInput.value);
 
-	const minusMortgageOwed = listPriceInput.value - mortgageOwed;
-	const totalProfit = minusMortgageOwed - totalFees - investmentInput.value;
-	const splitFiveWays = totalProfit / 5;
-	const grandkidsSplit = splitFiveWays / 4;
-	const withoutInvestment =
-		425000 - mortgageOwed - calculateFees(425000).totalFees;
+    const minusMortgageOwed = listPriceInput.value - mortgageOwed;
+    const totalProfit = Number(
+        (minusMortgageOwed - totalFees - investmentInput.value).toFixed(2)
+    );
+    const splitFiveWays = (totalProfit / 5).toFixed(2);
+    const grandkidsSplit = (splitFiveWays / 4).toFixed(2);
+    const withoutInvestment =
+        425000 - mortgageOwed - calculateFees(425000).totalFees;
 
-	return {
-		minusMortgageOwed,
-		totalProfit,
-		splitFiveWays,
-		grandkidsSplit,
-		withoutInvestment,
-	};
+    return {
+        minusMortgageOwed,
+        totalProfit,
+        splitFiveWays,
+        grandkidsSplit,
+        withoutInvestment,
+    };
 }
 
 function updateDisplays(fees, values) {
-	const remainingValueDisplay = document.getElementById("remainingValue");
-	const agentFeeDisplay = document.getElementById("agentFee");
-	const escrowFeeDisplay = document.getElementById("escrowFee");
-	const probateFeeDisplay = document.getElementById("probateFee");
-	const loanFeeDisplay = document.getElementById("loanFee");
-	const totalFeesDisplay = document.getElementById("totalFees");
-	const totalProfitDisplay = document.getElementById("totalProfit");
-	const splitFiveWaysDisplay = document.getElementById("splitFiveWays");
-	const grandkidsSplitDisplay = document.getElementById("grandkidsSplit");
-	const amountProfitWithoutInvestment = document.getElementById(
-		"amountProfitWithoutInvestment"
-	);
-	const theDifferenceDisplay = document.getElementById("theDifference");
+    const remainingValueDisplay = document.getElementById("remainingValue");
+    const agentFeeDisplay = document.getElementById("agentFee");
+    const escrowFeeDisplay = document.getElementById("escrowFee");
+    const probateFeeDisplay = document.getElementById("probateFee");
+    const loanFeeDisplay = document.getElementById("loanFee");
+    const totalFeesDisplay = document.getElementById("totalFees");
+    const totalProfitDisplay = document.getElementById("totalProfit");
+    const splitFiveWaysDisplay = document.getElementById("splitFiveWays");
+    const grandkidsSplitDisplay = document.getElementById("grandkidsSplit");
+    const amountProfitWithoutInvestment = document.getElementById(
+        "amountProfitWithoutInvestment"
+    );
+    const theDifferenceDisplay = document.getElementById("theDifference");
 
-	remainingValueDisplay.textContent = `Remaining Value: $${values.minusMortgageOwed}`;
-	agentFeeDisplay.textContent = `5% Agent Fee: $${fees.agentFee}`;
-	escrowFeeDisplay.textContent = `1% Escrow Fee: $${fees.escrowFee}`;
-	probateFeeDisplay.textContent = `2% Probate Fee: $${fees.probateFee}`;
-	loanFeeDisplay.textContent = `10% Loan Fee: $${fees.loanFee}`;
-	totalFeesDisplay.textContent = `Total Fees: $${fees.totalFees}`;
-	totalProfitDisplay.textContent = `Total Profit: $${values.totalProfit}`;
-	splitFiveWaysDisplay.textContent = `Split 5 Ways: $${values.splitFiveWays}`;
-	grandkidsSplitDisplay.textContent = `Grandkids Split: $${values.grandkidsSplit}`;
-	amountProfitWithoutInvestment.textContent = `Amount of Profit Without Investment: $${values.withoutInvestment}`;
-	theDifferenceDisplay.textContent = `The Difference: $${
-		values.totalProfit - values.withoutInvestment
-	}`;
+    remainingValueDisplay.textContent = `$${values.minusMortgageOwed}`;
+    agentFeeDisplay.textContent = `$${fees.agentFee}`;
+    escrowFeeDisplay.textContent = `$${fees.escrowFee}`;
+    probateFeeDisplay.textContent = `$${fees.probateFee}`;
+    loanFeeDisplay.textContent = `$${fees.loanFee}`;
+    totalFeesDisplay.textContent = `$${fees.totalFees}`;
+    totalProfitDisplay.textContent = `$${values.totalProfit}`;
+    splitFiveWaysDisplay.textContent = `$${values.splitFiveWays}`;
+    grandkidsSplitDisplay.textContent = `$${values.grandkidsSplit}`;
+    amountProfitWithoutInvestment.textContent = `$${values.withoutInvestment}`;
+    theDifferenceDisplay.textContent = `$${(
+        values.totalProfit - values.withoutInvestment
+    ).toFixed(2)}`;
 }
 
 calcButton.addEventListener("click", () => {
-	const fees = calculateFees(listPriceInput.value);
-	const values = calculateValues();
-	updateDisplays(fees, values);
+    const fees = calculateFees(listPriceInput.value);
+    const values = calculateValues();
+    updateDisplays(fees, values);
 
-	investmentInput.addEventListener("input", (e) => {
-		const fees = calculateFees(listPriceInput.value);
-		console.log("fees", fees);
-		const values = calculateValues();
-		updateDisplays(fees, values);
-	});
+    investmentInput.addEventListener("input", (e) => {
+        const fees = calculateFees(listPriceInput.value);
+        console.log("fees", fees);
+        const values = calculateValues();
+        updateDisplays(fees, values);
+    });
 
-	listPriceInput.addEventListener("input", (e) => {
-		const fees = calculateFees(listPriceInput.value);
-		console.log("fees", fees);
-		const values = calculateValues();
-		updateDisplays(fees, values);
-	});
+    listPriceInput.addEventListener("input", (e) => {
+        const fees = calculateFees(listPriceInput.value);
+        console.log("fees", fees);
+        const values = calculateValues();
+        updateDisplays(fees, values);
+    });
 });
 
-// calcButton.addEventListener("click", () => {
-// 	const listPriceValue = listPriceInput.value;
-// 	const minusMortgageOwed = listPriceValue - mortgageOwed;
-// 	document.getElementById(
-// 		"remainingValue"
-// 	).textContent = `Remaining Value: $${minusMortgageOwed}`;
+function calculateFeesTest(listPrice) {
+    const agentFee = agentPercentage * listPrice;
+    const escrowFee = escrowPercentage * listPrice;
+    const probateFee = probatePercentage * listPrice;
+    const loanFee = loanInterest * 50000;
+    const totalFees = agentFee + escrowFee + probateFee + loanFee;
+    return { totalFees, agentFee, escrowFee, probateFee, loanFee };
+}
 
-// 	const fees1 = calculateFees(listPriceValue);
-// 	const { totalFees: totalFeesNoInvestment } = calculateFees(425000);
+function calculateValuesTest() {
+    const { totalFees } = calculateFees(500000);
 
-// 	document.getElementById(
-// 		"agentFee"
-// 	).textContent = `5% Agent Fee: $${fees1.agentFee}`;
+    const minusMortgageOwed = 500000 - mortgageOwed;
+    const totalProfit = minusMortgageOwed - totalFees - 50000;
+    const splitFiveWays = totalProfit / 5;
+    const grandkidsSplit = splitFiveWays / 4;
+    const withoutInvestment =
+        425000 - mortgageOwed - calculateFees(425000).totalFees;
 
-// 	document.getElementById(
-// 		"escrowFee"
-// 	).textContent = `1% Escrow Fee: $${fees1.escrowFee}`;
+    return {
+        minusMortgageOwed,
+        totalProfit,
+        splitFiveWays,
+        grandkidsSplit,
+        withoutInvestment,
+    };
+}
 
-// 	document.getElementById(
-// 		"probateFee"
-// 	).textContent = `2% Probate Fee: $${fees1.probateFee}`;
+function testForStyling() {
+    const fees = calculateFeesTest(500000);
+    const values = calculateValuesTest();
+    updateDisplays(fees, values);
+}
 
-// 	document.getElementById(
-// 		"loanFee"
-// 	).textContent = `10% Loan Fee: $${fees1.loanFee}`;
-
-// 	document.getElementById(
-// 		"totalFees"
-// 	).textContent = `Total Fees: $${fees1.totalFees}`;
-
-// 	const totalProfit =
-// 		minusMortgageOwed - fees1.totalFees - investmentInput.value;
-// 	totalProfitDisplay.textContent = `Total Profit: $${totalProfit}`;
-
-// 	const splitFiveWays = totalProfit / 5;
-
-// 	document.getElementById(
-// 		"splitFiveWays"
-// 	).textContent = `Split 5 ways: $${splitFiveWays}`;
-
-// 	const grandkidsSplit = splitFiveWays / 4;
-
-// 	document.getElementById(
-// 		"grandkidsSplit"
-// 	).textContent = `Grandkids Split: $${grandkidsSplit}`;
-
-// 	const withoutInvestment = 425000 - mortgageOwed - totalFeesNoInvestment;
-
-// 	document.getElementById(
-// 		"amountProfitWithoutInvestment"
-// 	).textContent = `Amount of Profit Without Investment: $${withoutInvestment}`;
-
-// 	document.getElementById("theDifference").textContent = `Difference: $${
-// 		totalProfit - withoutInvestment
-// 	}`;
-// });
+// testForStyling();
