@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Template</title>
+
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			href="images/C-logo.png?v=1.1"
+			type="image/x-icon"
+		/>
+
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script src="./data.js" type="module"></script>
+		<script src="script.js" type="module"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div>
+				<label for="investmentInput">Investment Into Property</label>
+				<input id="investmentInput" type="number" />
+			</div>
+
+			<div>
+				<label for="listPriceInput">List Price</label>
+				<input type="number" id="listPriceInput" />
+			</div>
+			<button>Calculate</button>
+			<div>
+				<p id="mortgageOwed">Mortgage Owed: $68961</p>
+				<p id="remainingValue"></p>
+				<p id="agentFee"></p>
+				<p id="escrowFee"></p>
+				<p id="probateFee"></p>
+				<p id="loanFee"></p>
+				<p id="totalFees"></p>
+				<p id="totalProfit"></p>
+				<p id="splitFiveWays"></p>
+				<p id="grandkidsSplit"></p>
+				<p id="amountProfitWithoutInvestment"></p>
+				<p id="theDifference"></p>
+			</div>
+		</div>
+	</body>
+</html>
