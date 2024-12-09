@@ -86,6 +86,15 @@ button {
     margin-block-end: 20px;
 }
 
+.container {
+    margin-block: 30px;
+}
+
+.information {
+    font-style: italic;
+    margin-block-end: 10px;
+}
+
 .valueTitle span {
     font-weight: bold;
 }

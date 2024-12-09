@@ -65,13 +65,13 @@
             <div>
                 <div>
                     <label for="investmentInput"
-                        >Investment Into Property</label
+                        >Cost of Property Upgrades:</label
                     >
                 </div>
                 <input id="investmentInput" type="number" />
             </div>
             <div>
-                <div><label for="listPriceInput">List Price</label></div>
+                <div><label for="listPriceInput">List Price:</label></div>
                 <input type="number" id="listPriceInput" />
             </div>
             <button>Calculate</button>
@@ -80,26 +80,41 @@
                     Mortgage Owed: <span>$68961</span>
                 </p>
                 <p class="valueTitle">
-                    Remaining Value: <span id="remainingValue"></span>
+                    List Price Minus Mortgage Owed:
+                    <span id="remainingValue"></span>
                 </p>
-                <p class="valueTitle">
-                    5% Agent Fee: <span id="agentFee"></span>
-                </p>
-                <p class="valueTitle">
-                    1% Escrow Fee: <span id="escrowFee"></span>
-                </p>
-                <p class="valueTitle">
-                    2% Probate Fee: <span id="probateFee"></span>
-                </p>
-                <p class="valueTitle">
-                    10% Loan Fee: <span id="loanFee"></span>
-                </p>
-                <p class="valueTitle">
-                    Total Fees: <span id="totalFees"></span>
-                </p>
-                <p class="valueTitle">
-                    Total Profit: <span id="totalProfit"></span>
-                </p>
+
+                <div class="container">
+                    <p class="information">
+                        The following fees are percentages of the list price
+                    </p>
+                    <p class="valueTitle">
+                        5% Agent Fee: <span id="agentFee"></span>
+                    </p>
+                    <p class="valueTitle">
+                        1% Escrow Fee: <span id="escrowFee"></span>
+                    </p>
+                    <p class="valueTitle">
+                        2% Probate Fee: <span id="probateFee"></span>
+                    </p>
+                    <p class="valueTitle">
+                        10% Loan Fee: <span id="loanFee"></span>
+                    </p>
+                    <p class="valueTitle">
+                        Total Fees: <span id="totalFees"></span>
+                    </p>
+                </div>
+
+                <div class="container">
+                    <p class="information">
+                        Profit calculated based on List Price minus Upgrade Cost
+                        minus Mortgage Owed minus Total Fees
+                    </p>
+                    <p class="valueTitle">
+                        Total Profit: <span id="totalProfit"></span>
+                    </p>
+                </div>
+
                 <p class="valueTitle">
                     Split 5 ways: <span id="splitFiveWays"></span>
                 </p>
